@@ -31,10 +31,30 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
+  Category.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((updateCategory) => {
+      return Category.findAll({ where: { category_name: req.params.id } });
+    })
+    .catch((err) => {
+      res.json(err);
+    });
 });
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
+  Category.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+  .then((deleteCategory) => {
+    res.json(deleteCategory);
+  })
+  .catch((err) => res.json(err));
 });
 
 module.exports = router;
