@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
       where: {
         id: req.params.id
       },
-      include: [{ model: Product}]
+      include: [{ model: Product}],
     }
   ).then((data) => {
     res.json(data);
