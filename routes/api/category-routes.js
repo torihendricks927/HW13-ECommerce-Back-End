@@ -25,7 +25,7 @@ router.get("/:id", (req, res) => {
     .catch((err) => {
       res.status(500).json(err);
     });
-});
+  });
 
 router.post("/", (req, res) => {
   // create a new category
