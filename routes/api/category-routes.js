@@ -46,7 +46,7 @@ router.put("/:id", (req, res) => {
     },
   })
     .then((updateCategory) => {
-      return Category.findAll({ where: { category_name: req.params.id } });
+      res.json(updateCategory);
     })
     .catch((err) => {
       res.json(err);
